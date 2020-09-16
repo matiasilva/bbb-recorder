@@ -161,14 +161,16 @@ main()
 
 function convertAndCopy(filename){
 
+    const copyToDirectory = process.argv[6];
+
     var copyFromPath = homedir + "/Downloads";
     var onlyfileName = filename.split(".webm")
     var mp4File = onlyfileName[0] + ".mp4"
     var copyFrom = copyFromPath + "/" + filename + ""
-    var copyTo = argv[6] + "/" + mp4File;
+    var copyTo = copyToDirectory + "/" + mp4File;
 
-    if(!fs.existsSync(argv[6])){
-        fs.mkdirSync(argv[6]);
+    if(!fs.existsSync(copyToDirectory)){
+        fs.mkdirSync(copyToDirectory);
     }
 
     console.log(copyTo);
@@ -215,11 +217,13 @@ function convertAndCopy(filename){
 
 function copyOnly(filename){
 
-    var copyFrom = homedir + "/Downloads/" + filename;
-    var copyTo = argv[6] + "/" + filename;
+    const copyToDirectory = process.argv[6];
 
-    if(!fs.existsSync(argv[6])){
-        fs.mkdirSync(argv[6]);
+    var copyFrom = homedir + "/Downloads/" + filename;
+    var copyTo = copyToDirectory + "/" + filename;
+
+    if(!fs.existsSync(copyToDirectory)){
+        fs.mkdirSync(copyToDirectory);
     }
 
     try {

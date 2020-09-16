@@ -42,11 +42,10 @@ meeting_metadata = BigBlueButton::Events.get_meeting_metadata("/var/bigbluebutto
 require 'shellwords'
 output_file = Shellwords.escape("#{published_files}")
 node_file = Shellwords.escape("export.js")
-node export.js  meeting.webm 10 true
 base_dir = '${BBB_RECORDER_DOWNLOAD_DIR}'
 
 BigBlueButton.logger.info("Create downloadable video for [#{meeting_id}] start")
-rs = `cd #{base_dir} && ./node12/bin/node #{node_file} https://gateway.timeout.srcf.net/playback/presentation/2.0/playback.html?meetingId=#{meeting_id} video.mp4 0 true #{output_file}`
+rs = `cd #{base_dir} && ./node12/bin/node #{node_file} "https://gateway.timeout.srcf.net/playback/presentation/2.0/playback.html?meetingId=#{meeting_id}" "video.mp4" 0 true "#{output_file}"`
 BigBlueButton.logger.info(rs)
 BigBlueButton.logger.info("Create downloadable video for [#{meeting_id}] end")
 
