@@ -4,7 +4,7 @@ const fs = require('fs');
 const os = require('os');
 const homedir = os.homedir();
 const platform = os.platform();
-const { copyToPath, playbackFile } = require('./env');
+const { playbackFile } = require('./env');
 const spawn = require('child_process').spawn;
 
 var xvfb        = new Xvfb({
@@ -165,10 +165,10 @@ function convertAndCopy(filename){
     var onlyfileName = filename.split(".webm")
     var mp4File = onlyfileName[0] + ".mp4"
     var copyFrom = copyFromPath + "/" + filename + ""
-    var copyTo = copyToPath + "/" + mp4File;
+    var copyTo = argv[6] + "/" + mp4File;
 
-    if(!fs.existsSync(copyToPath)){
-        fs.mkdirSync(copyToPath);
+    if(!fs.existsSync(argv[6])){
+        fs.mkdirSync(argv[6]);
     }
 
     console.log(copyTo);
@@ -216,10 +216,10 @@ function convertAndCopy(filename){
 function copyOnly(filename){
 
     var copyFrom = homedir + "/Downloads/" + filename;
-    var copyTo = copyToPath + "/" + filename;
+    var copyTo = argv[6] + "/" + filename;
 
-    if(!fs.existsSync(copyToPath)){
-        fs.mkdirSync(copyToPath);
+    if(!fs.existsSync(argv[6])){
+        fs.mkdirSync(argv[6]);
     }
 
     try {
