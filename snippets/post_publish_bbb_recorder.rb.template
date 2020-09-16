@@ -41,7 +41,7 @@ meeting_metadata = BigBlueButton::Events.get_meeting_metadata("/var/bigbluebutto
 
 require 'shellwords'
 output_file = Shellwords.escape("#{published_files}")
-node_file = Shellwords.escape("/opt/bbb-recorder/export.js")
+node_file = Shellwords.escape("export.js")
 node export.js  meeting.webm 10 true
 base_dir = '${BBB_RECORDER_DOWNLOAD_DIR}'
 
